@@ -229,7 +229,8 @@ $PORT $PWORD $TLIMIT" >> $USER_FILE;
         fi
         create_json
         add_rules $PORT
-        run_ssserver
+        stop_ss
+	start_ss
 # 更新流量记录文件
     update_or_create_traffic_file_from_users
     calc_remaining
