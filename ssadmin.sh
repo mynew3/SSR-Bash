@@ -65,20 +65,20 @@ create_json () {
     ' $USER_FILE >> $JSON_FILE.tmp
     echo '}' >> $JSON_FILE.tmp
     mv $JSON_FILE.tmp $JSON_FILE
-
+    rm -rf /usr/local/shadowsocks/config.json
+    cp $JSON_FILE /usr/local/shadowsocks/config.json
 }
 
 run_ssserver () {
-    $SSSERVER -qq -c $JSON_FILE 2>/dev/null >/dev/null &
-    echo $! > $SSSERVER_PID 
+    python /usr/local/shadowsocks/shadowsocks/server.py -d start
 }
 
 check_ssserver () {
-    if [ -e $SSSERVER_PID ]; then
-        ps $(cat $SSSERVER_PID) 2>/dev/null | grep $SSSERVER_NAME 2>/dev/null
-        return $?
-    else
+    SSPID=$(ps -ef|grep 'python /usr/local/shadowsocks/shadowsocks/server.py -d start' |grep -v grep |awk '{print $2}')
+    if [[ $SSPID != "" ]]; then
         return 1
+    else
+        return 0
     fi
 }
 
@@ -96,13 +96,10 @@ start_ss () {
         echo "还没有用户，请先添加一个用户"
         return 1
     fi
-    if [ -e $SSSERVER_PID ]; then
-        if check_ssserver; then
+    check_ssserver
+    if [[ $? == 1 ]]; then
             echo 'ss服务已启动，同一实例不能启动多次！'
             return 1
-        else
-            rm $SSSERVER_PID
-        fi
     fi
     create_json
 
@@ -127,7 +124,8 @@ start_ss () {
     echo 'ssserver启动中...'
     run_ssserver 
     sleep 1
-    if check_ssserver; then 
+    check_ssserver
+    if [[ $? == 1 ]]; then
         echo 'ssserver已启动'
     else
         echo 'ssserver启动失败'
@@ -136,9 +134,9 @@ start_ss () {
 }
 
 stop_ss () {
-    if check_ssserver; then 
-        kill `cat $SSSERVER_PID`
-        rm $SSSERVER_PID 
+    check_ssserver
+    if [[ $? == 1 ]]; then
+        kill $SSPID
         del_ipt_chains 2> /dev/null
         echo 'ssserver已关闭'
     else
@@ -158,22 +156,10 @@ restart_ss () {
     start_ss
 }
     
-soft_restart_ss () {
-    if check_ssserver; then 
-        kill -s SIGQUIT `cat $SSSERVER_PID`
-        echo 'ssserver已关闭'
-        kill `cat $SSCOUNTER_PID`
-        echo 'sscounter.sh已关闭'
-        rm $SSSERVER_PID $SSCOUNTER_PID
-        del_ipt_chains 2> /dev/null
-        start_ss
-    else
-        echo 'ssserver未启动'
-    fi
-}
 
 status_ss () {
-    if check_ssserver; then 
+    check_ssserver
+    if [[ $? == 1 ]]; then
         echo 'ssserver正在运行'
     else
         echo 'ssserver未启动'
@@ -237,12 +223,13 @@ $PORT $PWORD $TLIMIT" >> $USER_FILE;
         return 1
     fi
 # 重新生成配置文件，并加载
-    if [ -e $SSSERVER_PID ]; then
+        check_ssserver
+        if [[ $? == 1 ]];then
+            kill $SSPID
+        fi
         create_json
-        kill -s SIGQUIT `cat $SSSERVER_PID`
         add_rules $PORT
         run_ssserver
-    fi
 # 更新流量记录文件
     update_or_create_traffic_file_from_users
     calc_remaining
@@ -264,13 +251,14 @@ del_user () {
         sed -i '/^\s*'$PORT'\s/ d' $USER_FILE
     fi
 # 重新生成配置文件，并加载
-    if [ -e $SSSERVER_PID ]; then
+        check_ssserver
+        if [[ $? == 1 ]];then
+            kill $SSPID
+        fi
         create_json
-        kill -s SIGQUIT `cat $SSSERVER_PID`
         del_rules $PORT 2>/dev/null
         del_reject_rules $PORT 2>/dev/null
         run_ssserver
-    fi
 # 更新流量记录文件
     update_or_create_traffic_file_from_users
     calc_remaining
@@ -307,12 +295,13 @@ change_user () {
         }' > $USER_FILE.tmp;
         mv $USER_FILE.tmp $USER_FILE
         # 重新生成配置文件，并加载
-        if [ -e $SSSERVER_PID ]; then
+            check_ssserver
+            if [[ $? == 1 ]];then
+            kill $SSPID
+            fi
             create_json
-            kill -s SIGQUIT `cat $SSSERVER_PID`
             add_rules $PORT
             run_ssserver
-        fi
         # 更新流量记录文件
         update_or_create_traffic_file_from_users
         calc_remaining
@@ -351,12 +340,13 @@ change_passwd () {
         }' > $USER_FILE.tmp;
         mv $USER_FILE.tmp $USER_FILE
         # 重新生成配置文件，并加载
-        if [ -e $SSSERVER_PID ]; then
+            check_ssserver
+            if [[ $? == 1 ]];then
+            kill $SSPID
+            fi
             create_json
-            kill -s SIGQUIT `cat $SSSERVER_PID`
             add_rules $PORT
             run_ssserver
-        fi
         # 更新流量记录文件
         update_or_create_traffic_file_from_users
         calc_remaining

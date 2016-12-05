@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 # 流量采样间隔,单位为秒
-INTERVEL=300
+INTERVEL=10
 # 指定Shadowsocks程序文件
 SSSERVER=ssserver
 
@@ -35,7 +35,6 @@ USER_FILE=$DIR/ssusers
 JSON_FILE=$DIR/ssmlt.json
 TRAFFIC_FILE=$DIR/sstraffic
 
-SSSERVER_PID=$TMPDIR/ssserver.pid
 SSCOUNTER_PID=$TMPDIR/sscounter.pid
 
 TRA_FORMAT='%-5d\t%.0f\n'
