@@ -1,3 +1,5 @@
+#!/bin/bash
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Copyright (c) 2014 hellofwy
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,10 +22,6 @@
 
 # 流量采样间隔,单位为秒
 INTERVEL=10
-# 指定Shadowsocks程序文件
-SSSERVER=ssserver
-
-SSSERVER_NAME=`basename $SSSERVER`
 
 TMPDIR=$DIR/tmp
 if [ ! -e $TMPDIR ]; then
@@ -201,37 +199,31 @@ calc_remaining () {
         }
     }
     END {
-        printf("# port limit(in_TB/GB/MB/KB) used(in_TB/GB/MB/KB) remaining(in_TB/GB/MB/KB)\n");
+        printf("#端口\t限制流量\t已使用\t剩余\n");
         for(j=1;j<i;j++) {
             port=user[j];
             printf("%-5d\t", port);
            
             limit=limits[port]
-            printf("%s", limit);
             print_in_gb(limit);
             printf("\t");
             totallim+=limit;
             
             used=uta[port];
-            printf("%.0f", used);
             print_in_gb(used);
             printf("\t");
             totalused+=used;
             
             remaining=limits[port]-uta[port];
-            printf("%.0f", remaining);
             print_in_gb(remaining);
             printf("\n");
             totalrem+=remaining;
         }
-            printf("%s\t", "Total");
-            printf("%.0f", totallim);
+            printf("%s\t", "总共");
             print_in_gb(totallim);
             printf("\t");
-            printf("%.0f", totalused);
             print_in_gb(totalused);
             printf("\t");
-            printf("%.0f", totalrem);
             print_in_gb(totalrem);
             printf("\n");
         

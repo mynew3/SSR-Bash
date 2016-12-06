@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Copyright (c) 2014 hellofwy
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,7 +35,6 @@ usage () {
 }
 wrong_para_prompt() {
     echo "参数输入错误!"
-    echo "查看帮助：ssadmin.sh -h"
 }
 
 #根据用户文件生成ssserver配置文件
@@ -98,7 +97,7 @@ start_ss () {
     fi
     check_ssserver
     if [[ $? == 1 ]]; then
-            echo 'ss服务已启动，同一实例不能启动多次！'
+            echo 'SSR服务已启动，同一实例不能启动多次！'
             return 1
     fi
     create_json
@@ -111,24 +110,24 @@ start_ss () {
         fi
     fi
 
-    echo 'sscounter.sh启动中...'
+    echo 'sscounter启动中...'
     ( $DIR/sscounter.sh ) & 
     echo $! > $SSCOUNTER_PID
     if check_sscounter; then 
-        echo 'sscounter.sh已启动'
+        echo 'sscounter已启动'
     else
-        echo 'sscounter.sh启动失败'
+        echo 'sscounter启动失败'
         return 1
     fi
 
-    echo 'ssserver启动中...'
+    echo 'SSR启动中...'
     run_ssserver 
     sleep 1
     check_ssserver
     if [[ $? == 1 ]]; then
-        echo 'ssserver已启动'
+        echo 'SSR已启动'
     else
-        echo 'ssserver启动失败'
+        echo 'SSR启动失败'
         return 1
     fi
 }
@@ -138,16 +137,16 @@ stop_ss () {
     if [[ $? == 1 ]]; then
         kill $SSPID
         del_ipt_chains 2> /dev/null
-        echo 'ssserver已关闭'
+        echo 'SSR已关闭'
     else
-        echo 'ssserver未启动'
+        echo 'SSR未启动'
     fi
     if check_sscounter; then 
         kill `cat $SSCOUNTER_PID`
         rm $SSCOUNTER_PID
-        echo 'sscounter.sh已关闭'
+        echo 'sscounter已关闭'
     else
-        echo 'sscounter.sh未启动'
+        echo 'sscounter未启动'
     fi
 }
 
@@ -160,14 +159,14 @@ restart_ss () {
 status_ss () {
     check_ssserver
     if [[ $? == 1 ]]; then
-        echo 'ssserver正在运行'
+        echo 'SSR正在运行'
     else
-        echo 'ssserver未启动'
+        echo 'SSR未启动'
     fi
     if check_sscounter; then 
-        echo 'sscounter.sh正在运行'
+        echo 'sscounter正在运行'
     else
-        echo 'sscounter.sh未启动'
+        echo 'sscounter未启动'
     fi
 }
 
@@ -226,13 +225,18 @@ $PORT $PWORD $TLIMIT" >> $USER_FILE;
         create_json
         add_rules $PORT
         stop_ss
-	start_ss
+	    start_ss
 # 更新流量记录文件
     update_or_create_traffic_file_from_users
     calc_remaining
 }
 
 del_user () {
+	if [ ! -e $USER_FILE ]; then
+        echo "还没有用户，请先添加一个用户"
+        return 1
+    fi
+
     if [ "$#" -ne 1 ]; then
         wrong_para_prompt;
         return 1
@@ -256,6 +260,7 @@ del_user () {
         del_rules $PORT 2>/dev/null
         del_reject_rules $PORT 2>/dev/null
         run_ssserver
+        clear
 # 更新流量记录文件
     update_or_create_traffic_file_from_users
     calc_remaining
@@ -582,18 +587,12 @@ case $1 in
         exit 0;
         ;;
     -v|v|version )
-        echo 'ss-bash Version 1.0-beta.3, 2014-12-3, Copyright (c) 2014 hellofwy'
+        echo 'ssr-bash Version 1.0-beta1, 2016-12-6, Copyright (c) 2014 hellofwy Modified by FunctionClub'
         exit 0;
         ;;
 esac
 if [ "$EUID" -ne 0 ]; then
-    echo "必需以root身份运行，请使用sudo等命令"
-    exit 1;
-fi
-if type $SSSERVER 2>&1 >/dev/null; then
-    :
-else
-    echo "无法找到ssserver程序，请在sslib.sh中指定其路径"
+    echo "必需以root身份运行"
     exit 1;
 fi
 case $1 in

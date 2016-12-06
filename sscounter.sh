@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Copyright (c) 2014 hellofwy
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
