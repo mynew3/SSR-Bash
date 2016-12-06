@@ -51,3 +51,4 @@
         ssadmin.sh reset_all_limit
     显示已添加的iptables规则：
         ssadmin.sh lrules
+test=`cat ssmlt.template|awk -F"[method]" '/method/{print $x}'`
