@@ -41,11 +41,13 @@ clear
 #InstallBasicPackages
 if [[ ${OS} == CentOS ]];then
   yum install epel-release -y
-  yum install wget unzip tar git bc -y
+  yum install wget unzip tar git python-pip bc -y
   yum groupinstall "Development Tools" -y
+  pip install shadowsocks
 else
   apt-get update -y
-  apt-get install build-essential git vim tar unzip bc -y
+  apt-get install build-essential git vim tar python-pip unzip bc -y
+  pip install shadowsocks
 fi
 
 #Clone Something
@@ -56,8 +58,8 @@ git clone https://github.com/FunctionClub/ss-bash
 #Intall libsodium
 wget --no-check-certificate -O libsodium-1.0.10.tar.gz https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
 tar -xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
- ./configure && make && make install
- echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf && ldconfig
-
+./configure && make && make install
+echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf && ldconfig
+cd ../ && rm -rf libsodium* 
  #Install Softlink
  ln -s /usr/local/ss-bash/ssadmin.sh /usr/local/bin/ssadmin
