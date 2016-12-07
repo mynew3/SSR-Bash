@@ -337,7 +337,7 @@ if [[ $choice == 2 ]];then
 	if [[ $uchoice == 1 ]];then
 		read -p "请输入新用户端口： " newport
 		read -p "请输入新用户端口的密码： " newpassword
-		read -p "请输入新用户流量限制（例如 10G）： " newlimit
+		read -p "请输入新用户流量限制（例如 10G, 500M）： " newlimit
 		bash /usr/local/SSR-Bash/ssadmin.sh add $newport $newpassword $newlimit
 	fi
 
