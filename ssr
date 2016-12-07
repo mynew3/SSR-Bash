@@ -10,7 +10,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 function echocopyright(){
 	echo '欢迎来到SSR-Bash管理程序！Author: 雨落无声'
 	echo '默认加密方式：chacha20'
-	echo '可选择协议：auth_sha1_compatible'
+	echo '可选择协议：auth_sha1_v2_compatible'
 	echo '可选择混淆：http_simple_compatible'
 	echo ''
 	echo "请输入序号来选择功能：\n"
