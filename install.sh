@@ -7,7 +7,8 @@ clear
 
 #InstallBasicPackages
 apt-get update -y
-apt-get install language-pack-zh-hans build-essential git vim tar python-pip unzip bc -y
+apt-get install build-essential git vim tar python-pip unzip bc -y
+apt-get install language-pack-zh-hans -y
 pip install shadowsocks
 
 #Clone Something
