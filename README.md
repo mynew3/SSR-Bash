@@ -20,15 +20,18 @@ ShadowsocksR多用户管理脚本
 ## 缺点 ##
 1. 只支持统计IPV4流量
 2. 程序路径已写死，只能通过此脚本进行管理
-3. 只在Ubuntu14.04上通过测试，其他系统均未测试或测试失败
 
 ## 系统支持 ##
-Ubuntu14.04
+- Ubuntu 14.04
+- Ubuntu 16.10
+- Debian7
+- Debian8
 
 ## 安装 ##
     wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/SSR-Bash/master/install.sh && bash install.sh
 
 ## 卸载 ##
     wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/SSR-Bash/master/uninstall.sh && bash uninstall.sh
+
 ## 开源许可 ##
 本程序大部分代码Fork于[ss-bash](https://github.com/hellofwy/ss-bash)，沿用其[MIT License](https://github.com/hellofwy/ss-bash/blob/master/LICENSE)任何基于本脚本的开发，修改，再发布请不要删除版权声明。请务必遵从以上协议，谢谢~
