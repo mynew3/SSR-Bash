@@ -57,9 +57,9 @@ function echoobfs(){
 function echocopyright(){
 	echo '欢迎来到SSR-Bash管理程序！Author: 雨落无声'
 	echo ''
-	echo -e "\033[41;37m当前加密方式：${method}\033[0m"
-	echo -e "\033[41;37m当前协议：${protocol}\033[0m"
-	echo -e "\033[41;37m当前混淆：${obfs}\033[0m"
+	echo -e "当前加密方式：\033[33m${method}\033[0m"
+	echo -e "当前协议：\033[33m${protocol}\033[0m"
+	echo -e "当前混淆：\033[33m${obfs}\033[0m"
 	echo ''
 	echo "请输入序号来选择功能："
 }
@@ -354,6 +354,8 @@ if [[ $choice == 2 ]];then
 		read -p "请输入新用户端口的密码： " newpassword
 		read -p "请输入新用户流量限制（例如 10G, 500M）： " newlimit
 		bash /usr/local/SSR-Bash/ssadmin.sh add $newport $newpassword $newlimit
+		echo ''
+		echo "端口为 $newport 密码为 $newpassword 流量限制为 $newlimit 的用户已添加成功！"
 	fi
 
 	if [[ $uchoice == 2 ]];then
