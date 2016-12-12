@@ -8,6 +8,20 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 ######Check Root######
 
 function preparevars(){
+
+	if [[ !(-f /usr/local/SSR-Bash/vars/method) ]]; then
+		mkdir -p /usr/local/SSR-Bash/vars/
+		echo "chacha20" > /usr/local/SSR-Bash/vars/method
+	fi
+
+	if [[ !(-f /usr/local/SSR-Bash/vars/protocol) ]]; then
+		echo "auth_sha1_v2_compatible" > /usr/local/SSR-Bash/vars/protocol
+	fi
+
+	if [[ !(-f /usr/local/SSR-Bash/vars/obfs) ]]; then
+		echo "http_simple_compatible" > /usr/local/SSR-Bash/vars/obfs
+	fi
+	
 	method=$(cat /usr/local/SSR-Bash/vars/method)
 	protocol=$(cat /usr/local/SSR-Bash/vars/protocol)
 	obfs=$(cat /usr/local/SSR-Bash/vars/obfs)
@@ -42,9 +56,10 @@ function echoobfs(){
 
 function echocopyright(){
 	echo '欢迎来到SSR-Bash管理程序！Author: 雨落无声'
-	echo "当前加密方式：${method}"
-	echo "当前协议：${protocol}"
-	echo "当前混淆：${obfs}"
+	echo ''
+	echo -e "\033[41;37m当前加密方式：${method}\033[0m"
+	echo -e "\033[41;37m当前协议：${protocol}\033[0m"
+	echo -e "\033[41;37m当前混淆：${obfs}\033[0m"
 	echo ''
 	echo "请输入序号来选择功能："
 }
