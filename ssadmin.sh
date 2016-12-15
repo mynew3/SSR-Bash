@@ -180,14 +180,7 @@ bytes2gb () {
     bc |
     awk '{printf("%.0f", $1)}'
 }
-check_port_range () {
-    PORT=$1
-    if (( ($PORT > 0) && ($PORT <= 65535 ) && ($PORT != 137) && ($PORT !=138) && ($PORT != 53) && ($PORT != 80) )); then
-        return 0
-    else
-        return 1
-    fi
-}
+
 add_user () {
     if [ "$#" -ne 3 ]; then
         wrong_para_prompt;
