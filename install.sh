@@ -25,12 +25,12 @@ pip install shadowsocks
 #Set Time Zone
 rm -rf /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-ntpdate 1.cn.pool.ntp.org
+ntpdate 1.asia.pool.ntp.org
 
 #Clone Something
 cd /usr/local
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
-git clone https://github.com/FunctionClub/SSR-Bash
+git clone https://github.com/AlphaBrock/SSR-Bash
 
 #Intall libsodium
 cd /root
