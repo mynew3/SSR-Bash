@@ -15,7 +15,7 @@ function preparevars(){
 	fi
 
 	if [[ !(-f /usr/local/SSR-Bash/vars/protocol) ]]; then
-		echo "auth_sha1_v2_compatible" > /usr/local/SSR-Bash/vars/protocol
+		echo "auth_sha1_compatible" > /usr/local/SSR-Bash/vars/protocol
 	fi
 
 	if [[ !(-f /usr/local/SSR-Bash/vars/obfs) ]]; then
@@ -38,12 +38,13 @@ function echomethods(){
 function echoprotocols(){
 	echo '1.origin'
 	echo '2.auth_simple'
-	echo '3.auth_sha1_v2'
-	echo '4.auth_sha1_v4'
-	echo '5.auth_aes128_md5'
-	echo '6.auth_aes128_sha1'
-	echo '7.verify_sha1'
-	echo '8.verify_deflate'
+	echo '3.auth_sha1'
+	echo '4.auth_sha1_v2'
+	echo '5.auth_sha1_v4'
+	echo '6.auth_aes128_md5'
+	echo '7.auth_aes128_sha1'
+	echo '8.verify_sha1'
+	echo '9.verify_deflate'
 }
 
 function echoobfs(){
