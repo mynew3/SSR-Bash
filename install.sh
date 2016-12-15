@@ -36,7 +36,7 @@ ntpdate 1.asia.pool.ntp.org
 
 #Clone Something
 cd /usr/local
-git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
+git clone https://github.com/breakwa11/shadowsocks.git
 git clone https://github.com/AlphaBrock/SSR-Bash
 
 #Intall libsodium
