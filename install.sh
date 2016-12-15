@@ -1,5 +1,11 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+#=================================================================#
+#   System Required:  Debian7/8, Ubuntu14.04                      #
+#   Description: One click Install ShadowsocksR Server            #
+#   Fork: @FunctionClub <https://github.com/FunctionClub>         #
+#   Author： AlphaBrock https://alphabrock.cn                     #
+#=================================================================#
 
 #Check Root
 [ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
@@ -45,4 +51,3 @@ wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubuserconte
 chmod +x /usr/local/bin/ssr
 
 echo '安装完成！输入 ssr 即可使用本程序~'
-echo '欢迎加QQ群：277717865 讨论交流哦~'
