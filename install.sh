@@ -41,7 +41,7 @@ echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf && ldconfig
 cd ../ && rm -rf libsodium* 
 
  #Install Softlink
-wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubusercontent.com/FunctionClub/SSR-Bash/master/ssr
+wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/ssr
 chmod +x /usr/local/bin/ssr
 
 echo '安装完成！输入 ssr 即可使用本程序~'
