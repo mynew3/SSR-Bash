@@ -3,6 +3,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 #=================================================================#
 #   System Required:  Debian7/8, Ubuntu14.04                      #
 #   Description: One click Install ShadowsocksR Server            #
+#   Thanks: @hellofwy <https://github.com/hellofwy>               #
 #   Fork: @FunctionClub <https://github.com/FunctionClub>         #
 #   Author： AlphaBrock https://alphabrock.cn                     #
 #=================================================================#
