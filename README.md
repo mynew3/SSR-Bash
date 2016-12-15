@@ -26,8 +26,8 @@ ShadowsocksR多用户管理脚本
 - Debian8
 
 ## 安装 ##
-`   wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh`
+   wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh
 ## 卸载 ##
-`    wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/uninstall.sh && bash uninstall.sh`
+   wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/uninstall.sh && bash uninstall.sh
 ## 开源许可 ##
 本程序大部分代码Fork于[ss-bash](https://github.com/hellofwy/ss-bash)，沿用其[MIT License](https://github.com/hellofwy/ss-bash/blob/master/LICENSE)任何基于本脚本的开发，修改，再发布请不要删除版权声明。请务必遵从以上协议，谢谢~
