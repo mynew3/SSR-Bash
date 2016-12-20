@@ -85,16 +85,16 @@ function pre_install(){
 #apt-get install language-pack-zh-hans -y
 #pip install shadowsocks
 
-    # Install necessary dependencies
-    if [ "$OS" == 'CentOS' ]; then
-        yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent git ntpdate
-        yum install -y m2crypto automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel
-    else
-        apt-get -y update
-        apt-get -y install python python-dev python-pip python-m2crypto curl wget unzip gcc swig automake make perl cpio build-essential git ntpdate
-        pip install shadowsocks
-    fi
-    cd $cur_dir
+# Install necessary dependencies
+if [ "$OS" == 'CentOS' ]; then
+    yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent git ntpdate
+    yum install -y m2crypto automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel
+else
+    apt-get -y update
+    pt-get -y install python python-dev python-pip python-m2crypto curl wget unzip gcc swig automake make perl cpio build-essential git ntpdate
+    pip install shadowsocks
+fi
+cd $cur_dir
 }
 
 #Set Time Zone
