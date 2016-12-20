@@ -1,4 +1,8 @@
 #! /bin/bash
+#chkconfig: 2345 10 90 
+#description:ssr run systemstart up
+
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
+
 bash /usr/local/SSR-Bash/ssadmin.sh start
