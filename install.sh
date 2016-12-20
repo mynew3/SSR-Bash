@@ -114,6 +114,7 @@ function ssr_chkconfig(){
     wget -N --no-check-certificate -O /etc/init.d/shadowsocks https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/ssr_chkconfig 
     chmod +x /etc/init.d/shadowsocks
     if [ "$OS" == 'CentOS' ];then
+        cd /etc/init.d/
         chkconfig --add shadowsocks
         chkconfig shadowsocks on
     else
