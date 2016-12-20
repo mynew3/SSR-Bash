@@ -29,12 +29,12 @@ ShadowsocksR多用户管理脚本
 - Centos6(New)
 
 ## 安装 ##
-```
+```bash
 wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh
 ```
 
 ## 卸载 ##
-```
+```bash
 wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/uninstall.sh && bash uninstall.sh
 ```
 
