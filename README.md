@@ -33,6 +33,12 @@ ShadowsocksR多用户管理脚本
 wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh
 ```
 
+## 使用 ##
+要进入管理程序请在终端输入
+```bash 
+ssr
+```
+
 ## 卸载 ##
 ```bash
 wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/uninstall.sh && bash uninstall.sh
