@@ -6,8 +6,8 @@ ShadowsocksR多用户管理脚本
 
 
 ## 功能 ##
-- 新增对centos6的支持
-- 添加ssr系统启动项，无需在重启后再次手动开启服务
+- **新：**增加对centos6的支持
+- **新：**添加ssr系统启动项，无需在重启后再次手动开启服务
 - 一键开启、关闭SSR服务
 - 添加、删除、修改用户端口和密码
 - 自由限制用户端口流量使用
@@ -29,10 +29,14 @@ ShadowsocksR多用户管理脚本
 - Centos6(New)
 
 ## 安装 ##
-    wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh
+```
+wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh
+```
 
 ## 卸载 ##
-    wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/uninstall.sh && bash uninstall.sh
+```
+wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/uninstall.sh && bash uninstall.sh
+```
 
 ## 开源许可 ##
 本程序大部分代码Fork于[ss-bash](https://github.com/hellofwy/ss-bash)，沿用其[MIT License](https://github.com/hellofwy/ss-bash/blob/master/LICENSE)任何基于本脚本的开发，修改，再发布请不要删除版权声明。请务必遵从以上协议，谢谢~
