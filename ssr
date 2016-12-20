@@ -56,7 +56,11 @@ function echoobfs(){
 }
 
 function echocopyright(){
-	echo '欢迎来到SSR-Bash管理程序！Author: 雨落无声'
+	echo '欢迎来到SSR-Bash管理程序！'
+	echo ''
+	echo ''
+	echo '首次运行请先添加用户'
+	echo ''
 	echo ''
 	echo -e "当前加密方式：\033[33m${method}\033[0m"
 	echo -e "当前协议：\033[33m${protocol}\033[0m"
