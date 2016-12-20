@@ -56,7 +56,7 @@ function echoobfs(){
 }
 
 function echocopyright(){
-	echo '欢迎来到SSR-Bash管理程序！'
+	echo '欢迎来到SSR-Bash管理程序！Author: 雨落无声'
 	echo ''
 	echo ''
 	echo '首次运行请先添加用户'
