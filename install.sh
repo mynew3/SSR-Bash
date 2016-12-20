@@ -114,7 +114,7 @@ function ssr_chkconfig(){
     if [ "$OS" == 'CentOS' ];then
         echo "bash /usr/local/SSR-Bash/ssadmin.sh start" >> /etc/rc.d/rc.sysinit
     else
-        wget -N --no-check-certificate -O /etc/init.d/shadowsocks https://raw.githubusercontent.com/FunctionClub/SSR-Bash/master/ssr_chkconfig /etc/init.d/shadowsocks
+        wget -N --no-check-certificate -O /etc/init.d/shadowsocks https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/ssr_chkconfig 
         chmod +x /etc/init.d/shadowsocks
         update-rc.d -f shadowsocks defaults
     fi
