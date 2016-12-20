@@ -27,6 +27,7 @@ ShadowsocksR多用户管理脚本
 - Debian7
 - Debian8
 - ***Centos6(New)***
+
 ## 安装 ##
 ```bash
 wget -N --no-check-certificate https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/install.sh && bash install.sh
