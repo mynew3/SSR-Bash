@@ -111,7 +111,7 @@ git clone https://github.com/AlphaBrock/SSR-Bash
 
 #add run on systemstart up 
 function ssr_chkconfig(){
-    wget -N --no-check-certificate -O https://raw.githubusercontent.com/FunctionClub/SSR-Bash/master/ssr-chkconfig.sh /etc/init.d/shadowsocks
+    wget -N --no-check-certificate -O https://raw.githubusercontent.com/FunctionClub/SSR-Bash/master/ssr_chkconfig.sh /etc/init.d/shadowsocks
     chmod +x /etc/init.d/shadowsocks
     if [ "$OS" == 'CentOS' ];then
         chkconfig -add shadowsocks
