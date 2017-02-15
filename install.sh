@@ -114,7 +114,7 @@ function ssr_chkconfig(){
     if [ "$OS" == 'CentOS' ];then
         echo "bash /usr/local/SSR-Bash/ssadmin.sh start" >> /etc/rc.d/rc.sysinit
     else
-        wget -N --no-check-certificate -O /etc/init.d/shadowsocks https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/ssr_chkconfig 
+        wget -N --no-check-certificate -O /etc/init.d/shadowsocks https://raw.githubusercontent.com/mynew3/SSR-Bash/master/ssr_chkconfig 
         chmod +x /etc/init.d/shadowsocks
         update-rc.d -f shadowsocks defaults
     fi
@@ -122,7 +122,7 @@ function ssr_chkconfig(){
 
 function Install_libsodium(){
 cd /root
-wget --no-check-certificate -O libsodium-1.0.10.tar.gz https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
+wget --no-check-certificate -O libsodium-1.0.10.tar.gz https://github.com/mynew3/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
 tar -xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
 ./configure && make && make install
 echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf && ldconfig
@@ -130,7 +130,7 @@ cd ../ && rm -rf libsodium*
 }
 
 function Install_Softlink(){
-wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubusercontent.com/AlphaBrock/SSR-Bash/master/ssr
+wget -N --no-check-certificate -O /usr/local/bin/ssr https://raw.githubusercontent.com/mynew3/SSR-Bash/master/ssr
 chmod +x /usr/local/bin/ssr
  }
 
