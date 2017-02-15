@@ -23,8 +23,8 @@ function rootness(){
 }
 
 function Set_DNS(){
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+echo "nameserver 114.114.114.114" > /etc/resolv.conf
+echo "nameserver 114.114.114.119" >> /etc/resolv.conf
 }
 
 # Disable selinux
