@@ -105,8 +105,8 @@ cd $cur_dir
 
 function Clone_Something(){
 cd /usr/local
-git clone  https://github.com/breakwa11/shadowsocks.git                                       
-git clone https://github.com/AlphaBrock/SSR-Bash 
+git clone  https://github.com/mynew3/shadowsocksr.git                                       
+git clone https://github.com/mynew3/SSR-Bash 
 }
 
 #add run on systemstart up 
